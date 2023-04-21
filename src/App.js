@@ -1,11 +1,26 @@
 import './App.css';
-
-function App() {
+import { createContext, useState } from 'react';
+import Header from './components/ui/header/Header';
+export const ThemeContext = createContext({});
+const App = () => {
+  document.title = 'Colore';
+  //https://web.dev/prefers-color-scheme/
+  const colourMode = () => {
+    const isTheme = localStorage.getItem('theme');
+    const darkModeOn = window.matchMedia(
+      '(prefers-color-scheme: dark)'
+    ).matches;
+    if (isTheme) return isTheme;
+    if (darkModeOn) return 'dark';
+    return 'light';
+  };
+  const [theme, setTheme] = useState(colourMode);
   return (
-    <div className="App">
-      <h1>Hello</h1>
-    </div>
+    <ThemeContext.Provider value={{ theme, setTheme }}>
+      <div className="App">
+        <Header />
+      </div>
+    </ThemeContext.Provider>
   );
-}
-
+};
 export default App;

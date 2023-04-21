@@ -1,0 +1,20 @@
+:root[color-scheme='dark'] {
+  --bgr: #131313;
+  --primary: #1c1c1c;
+  --accent: #0c0c0c;
+  --gray: #d9d9d9;
+  --red: #fd5d5d;
+  --green: #5dfd80;
+  --text: #ffffff;
+  --addColour: #0c0c0c;
+}
+:root[color-scheme='light'] {
+  --bgr: #fff;
+  --primary: #1c1c1c;
+  --accent: #0c0c0c;
+  --gray: #d9d9d9;
+  --red: #fd5d5d;
+  --green: #5dfd80;
+  --text: #212121;
+  --addColour: #f5f5f5;
+}

@@ -1,3 +1,12 @@
+[comment]:<h1 align="center">Colore</h1>
+[comment]:<p align="center"></p>
+[comment]:<p align="left"></p>
+
+## Links
+
+- [Repo] (<a href="https://github.com/skyzavr/colore">Link to repo</a>)
+- [Live] (<a href="#">Link to live demo</a>)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

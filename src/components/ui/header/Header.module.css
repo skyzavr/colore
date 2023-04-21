@@ -1,0 +1,7 @@
+/* themes (switcher) container */
+.themes {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
