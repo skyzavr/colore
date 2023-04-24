@@ -1,7 +1,53 @@
+@import url('../../../colours.css');
+@import url('../../../fontSize.css');
+/* header */
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  padding: var(--medSize--4);
+  align-items: center;
+}
+.title,
+.gitHubLink a {
+  color: var(--text);
+}
+/* link */
+.gitHubLink a {
+  transition: 0.5s;
+  font-size: var(--smallSize--2);
+  font-family: 'Oswald', sans-serif;
+}
+.gitHubLink a:hover {
+  color: var(--addColour--2);
+  transition: 0.5s;
+}
+.title {
+  margin: 0 auto;
+  font-size: var(--medSize--2);
+}
+/* ##### */
+/* btns: switcher and bookmarks */
 /* themes (switcher) container */
 .themes {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  margin-left: var(--medSize--4);
+}
+/* switcher svg icon depends on colour mode*/
+.themes svg * {
+  stroke: var(--text);
+}
+/* bookmarks icon  depends on colour mode*/
+.bookmarks {
+  margin-left: var(--medSize--4);
+}
+.bookmarks svg * {
+  fill: var(--text);
+}
+.btns {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }

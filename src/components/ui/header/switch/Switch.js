@@ -6,7 +6,6 @@ import { ThemeContext } from '../../../../App';
 const Switch = () => {
   const { theme, setTheme } = useContext(ThemeContext);
   const [checked, setChecked] = useState(theme === 'light' ? false : true);
-
   const themeToggle = () => {
     setTheme(checked ? 'light' : 'dark');
     //because useState won't update it in time, so logic is upsideDown
