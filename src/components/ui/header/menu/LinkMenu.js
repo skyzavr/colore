@@ -1,6 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
 import classes from './LinkMenu.module.css';
-
 const LinkMenu = () => {
   const menuList = [
     { id: '01', value: 'paletteGen', title: 'Palette Generator' },
@@ -21,8 +20,9 @@ const LinkMenu = () => {
     if (!isMenuOpen) return;
     /* if menu is open and we clicked outside the menu */
     const clickedInside = menuRef.current.contains(event.target);
+    const clickedMenuTitle = titleRef.current.contains(event.target);
     if (clickedInside) menuElementHandler(event.target.innerHTML);
-    if (!clickedInside) dropDownHandler();
+    if (!clickedInside && !clickedMenuTitle) dropDownHandler();
   };
   useEffect(() => {
     window.addEventListener('mousedown', clickOutsideHandler);
