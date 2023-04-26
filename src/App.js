@@ -19,8 +19,6 @@ const App = () => {
     <ThemeContext.Provider value={{ theme, setTheme }}>
       <div className="App">
         <Header />
-        <hr style={{ height: '1px', backgroundColor: `var(--text)` }} />
-        <div></div>
       </div>
     </ThemeContext.Provider>
   );

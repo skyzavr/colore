@@ -6,15 +6,19 @@
   flex-direction: row;
   padding: var(--medSize--4);
   align-items: center;
+  justify-content: space-between;
 }
 .title,
 .gitHubLink a {
   color: var(--text);
 }
 /* link */
+.gitHubLink {
+  margin-top: 20px;
+}
 .gitHubLink a {
   transition: 0.5s;
-  font-size: var(--smallSize--2);
+  font-size: var(--smallSize--3);
   font-family: 'Oswald', sans-serif;
 }
 .gitHubLink a:hover {
@@ -22,32 +26,26 @@
   transition: 0.5s;
 }
 .title {
-  margin: 0 auto;
-  font-size: var(--medSize--2);
+  font-size: var(--medSize--4);
 }
 /* ##### */
-/* btns: switcher and bookmarks */
-/* themes (switcher) container */
-.themes {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  margin-left: var(--medSize--4);
-}
-/* switcher svg icon depends on colour mode*/
-.themes svg * {
-  stroke: var(--text);
-}
+
 /* bookmarks icon  depends on colour mode*/
-.bookmarks {
+.Bookmarks {
   margin-left: var(--medSize--4);
+  margin-right: var(--medSize--4);
 }
-.bookmarks svg * {
+.Bookmarks svg * {
   fill: var(--text);
 }
-.btns {
+.hr {
+  height: 1px;
+  background-color: var(--gray);
+  opacity: 0.7;
+}
+.menuWrapper {
   display: flex;
   flex-direction: row;
   align-items: center;
 }
+/* responsive */

@@ -8,7 +8,6 @@ const Switch = () => {
   const [checked, setChecked] = useState(theme === 'light' ? false : true);
   const themeToggle = () => {
     setTheme(checked ? 'light' : 'dark');
-    //because useState won't update it in time, so logic is upsideDown
     setChecked(!checked);
   };
   useEffect(() => {
@@ -16,14 +15,14 @@ const Switch = () => {
     localStorage.setItem('theme', theme);
   }, [theme, checked]);
   return (
-    <>
+    <div className={classes.themes}>
       <LightIcon />
       <label className={classes.switch}>
         <input type="checkbox" onChange={themeToggle} checked={checked} />
         <span className={classes.slider}></span>
       </label>
       <DarkIcon />
-    </>
+    </div>
   );
 };
 export default Switch;

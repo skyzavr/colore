@@ -1,10 +1,24 @@
 @import url('../../../../colours.css');
+@import url('../../../../fontSize.css');
+/* wrapper */
+/* themes (switcher) container */
+.themes {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+/* switcher svg icon depends on colour mode*/
+.themes svg * {
+  stroke: var(--text);
+}
+/*  */
 /* the border around the switcher */
 .switch {
   position: relative;
   display: inline-block;
-  width: 50px;
-  height: 28px;
+  width: 46px;
+  height: 26px;
   margin-left: 10px;
   margin-right: 10px;
 }
@@ -33,14 +47,14 @@
   height: 20px;
   width: 20px;
   left: 4px;
-  bottom: 4px;
+  bottom: 3px;
   border-radius: 50%;
   background-color: var(--bgr);
   -webkit-transition: 0.4s;
   transition: 0.4s;
 }
 input:checked + .slider:before {
-  -webkit-transform: translateX(22px);
-  -ms-transform: translateX(226px);
-  transform: translateX(22px);
+  -webkit-transform: translateX(20px);
+  -ms-transform: translateX(20px);
+  transform: translateX(20px);
 }
