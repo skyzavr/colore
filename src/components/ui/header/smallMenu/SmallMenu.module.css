@@ -54,11 +54,14 @@
   cursor: pointer;
   padding-bottom: 20px;
   text-align: center;
+  transition: 0.4s;
+}
+.menuMobile ul li a {
   color: var(--text);
   font-size: var(--medSize--4);
   transition: 0.4s;
 }
-.menuMobile ul li:hover {
+.menuMobile ul li a:hover {
   color: var(--addColour--2);
   transition: 0.4s;
 }

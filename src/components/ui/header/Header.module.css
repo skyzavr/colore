@@ -8,7 +8,7 @@
   align-items: center;
   justify-content: space-between;
 }
-.title,
+.title a,
 .gitHubLink a {
   color: var(--text);
 }

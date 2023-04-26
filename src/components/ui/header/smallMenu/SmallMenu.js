@@ -12,8 +12,8 @@ const SmallMenu = ({ children, width, menuList }) => {
   const clickMenuHandler = (event) => {
     if (!isMenuOpen) return;
     const clickedInside = menuRef.current.contains(event.target);
-    const clickedMenuTitle = btnRef.current.contains(event.target);
-    if (!clickedInside && !clickedMenuTitle) menuHandler();
+    const Btn = btnRef.current.contains(event.target);
+    if (!clickedInside && !Btn) menuHandler();
   };
   useEffect(() => {
     document.body.style.overflowY = isMenuOpen ? 'hidden' : 'scroll';
@@ -39,9 +39,9 @@ const SmallMenu = ({ children, width, menuList }) => {
           className={classes.menuMobile}
           style={{ left: `${isMenuOpen ? 0 : -1 * width}px` }}
         >
-          <div ref={menuRef} style={{ display: 'inline-block' }}>
+          <div style={{ display: 'inline-block' }} ref={menuRef}>
             <ul>
-              <ListUl list={menuList} />
+              <ListUl list={menuList} clickHandler={menuHandler} />
             </ul>
             <Switch />
             {children}

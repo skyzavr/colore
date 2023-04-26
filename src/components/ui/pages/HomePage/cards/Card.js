@@ -1,9 +1,13 @@
 import classes from './Card.module.css';
-const Card = ({ comp, title }) => {
+import { Link } from 'react-router-dom';
+
+const Card = ({ comp, title, path }) => {
   return (
     <div className={classes.card}>
-      <div className={classes.cardImg}>{comp}</div>
-      <div className={classes.cardTitle}>{title}</div>
+      <Link to={path}>
+        <div className={classes.cardImg}>{comp}</div>
+        <div className={classes.cardTitle}>{title}</div>
+      </Link>
     </div>
   );
 };
