@@ -8,6 +8,7 @@
   cursor: pointer;
   margin-left: 10px;
   width: 30px;
+  z-index: 10000;
 }
 .menuBtn:hover div {
   background-color: var(--addColour--2);
@@ -35,10 +36,15 @@
 }
 /* menu mobile */
 .menuMobile {
-  padding-top: 100px;
   transition: left 0.4s ease-in-out;
-  position: relative;
   text-align: center;
+  left: 0px;
+  position: absolute;
+  top: 0;
+  padding-top: 100px;
+  width: 100%;
+  height: 100%;
+  background-color: var(--bgr);
 }
 .menuMobile ul {
   padding: 20px;

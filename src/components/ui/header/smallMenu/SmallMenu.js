@@ -21,7 +21,6 @@ const SmallMenu = ({ children, width, menuList }) => {
   }, [isMenuOpen]);
   return (
     <>
-      {/* todo: animation */}
       <div className={classes.menuBtn} onClick={menuHandler} ref={btnRef}>
         <div
           className={classes[`${isMenuOpen ? 'topLineAct' : 'topLine'}`]}
@@ -40,7 +39,7 @@ const SmallMenu = ({ children, width, menuList }) => {
             <ul>
               <ListUl list={menuList} />
             </ul>
-            {width < 700 && <Switch />}
+            <Switch />
             {children}
           </div>
         </div>,
