@@ -1,10 +1,11 @@
 @import url('../../../../../colours.css');
+@import url('../../../../../fontSize.css');
 .card {
   display: flex;
   flex-direction: column;
   background-color: var(--primary);
-  width: 450px;
-  height: 250px;
+  width: 300px;
+  height: 160px;
   justify-content: center;
   align-items: center;
   padding: 20px 30px;
@@ -18,8 +19,16 @@
 .card {
   transition: 0.6s;
 }
-
 .cardTitle {
   margin-top: 20px;
   color: var(--gray--2);
+  font-size: var(--smallSize--3);
+}
+.cardImg {
+  height: 70px;
+  display: flex;
+  align-items: center;
+}
+.cardImg svg {
+  height: 100%;
 }

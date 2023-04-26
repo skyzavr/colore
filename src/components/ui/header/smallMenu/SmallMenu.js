@@ -16,8 +16,12 @@ const SmallMenu = ({ children, width, menuList }) => {
     if (!clickedInside && !clickedMenuTitle) menuHandler();
   };
   useEffect(() => {
+    document.body.style.overflowY = isMenuOpen ? 'hidden' : 'scroll';
     window.addEventListener('mousedown', clickMenuHandler);
-    return () => window.removeEventListener('mousedown', clickMenuHandler);
+    return () => {
+      document.body.style.overflowY = 'scroll';
+      window.removeEventListener('mousedown', clickMenuHandler);
+    };
   }, [isMenuOpen]);
   return (
     <>
