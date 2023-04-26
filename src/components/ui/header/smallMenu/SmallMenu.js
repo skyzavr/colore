@@ -23,8 +23,12 @@ const SmallMenu = ({ children, width, menuList }) => {
     <>
       {/* todo: animation */}
       <div className={classes.menuBtn} onClick={menuHandler} ref={btnRef}>
-        <div className={classes.topLine}></div>
-        <div className={classes.bottomLine}></div>
+        <div
+          className={classes[`${isMenuOpen ? 'topLineAct' : 'topLine'}`]}
+        ></div>
+        <div
+          className={classes[`${isMenuOpen ? 'bottomLineAct' : 'bottomLine'}`]}
+        ></div>
       </div>
 
       {createPortal(
