@@ -1,6 +1,8 @@
 import './App.css';
 import { createContext, useState } from 'react';
 import Header from './components/ui/header/Header';
+import Home from './components/ui/pages/HomePage/Home';
+
 export const ThemeContext = createContext({});
 const App = () => {
   document.title = 'Colore';
@@ -19,6 +21,7 @@ const App = () => {
     <ThemeContext.Provider value={{ theme, setTheme }}>
       <div className="App">
         <Header />
+        <Home />
       </div>
     </ThemeContext.Provider>
   );
