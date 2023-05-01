@@ -1,0 +1,37 @@
+@import url('../../../colours.css');
+.inputColourWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.title {
+  font-size: var(--smallSize--1);
+  color: var(--text);
+  margin-bottom: 5px;
+  margin-top: 10px;
+}
+.wrapper {
+  background-color: var(--text);
+  width: 190px;
+  height: 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 5px;
+  border-radius: 4px;
+}
+.colorTitle {
+  color: var(--bgr);
+}
+.colorRect {
+  width: 22px;
+  height: 22px;
+  border-radius: 2px;
+  cursor: pointer;
+}
+@media (min-width: 475px) {
+  .inputColourWrapper {
+    margin-right: 20px;
+  }
+}
