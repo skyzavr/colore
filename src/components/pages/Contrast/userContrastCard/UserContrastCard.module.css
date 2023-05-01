@@ -1,0 +1,39 @@
+.cardField {
+}
+.cardField_Card {
+  margin-top: 20px;
+  height: 215px;
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.cardField_Title,
+.cardField_Text,
+.cardField_Sign {
+  color: var(--text);
+}
+.cardField_Title {
+  font-size: 1.875rem;
+}
+.cardField_Text {
+  font-size: 1.25rem;
+  line-height: 1.38;
+  max-width: 500px;
+  word-wrap: break-word;
+}
+.cardField_Sign {
+  font-size: 1rem;
+  font-weight: 800;
+}
+@media (min-width: 300px) {
+  .cardField_Card {
+    width: 100%;
+  }
+}
+@media (min-width: 450px) {
+  .cardField_Card {
+    width: 400px;
+  }
+}

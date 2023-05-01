@@ -1,0 +1,45 @@
+@import url('../../../../../colours.css');
+@import url('../../../../../fontSize.css');
+* {
+  color: var(--accent);
+}
+.wrapper {
+  display: flex;
+  max-width: 500px;
+}
+
+.ContrastCard {
+  background-color: var(--red);
+  border-radius: 10px;
+  width: 150px;
+  height: 100px;
+  padding: 10px;
+}
+.info {
+  font-size: var(--SmallSize--1);
+  font-weight: 800;
+}
+.value {
+  margin-top: 20px;
+  font-size: var(--bigSize--2);
+  font-weight: 800;
+}
+@media (min-width: 300px) {
+  .wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+  .ContrastCard {
+    margin-bottom: 10px;
+  }
+}
+@media (min-width: 580px) {
+  .wrapper {
+    flex-direction: row;
+    align-items: self-start;
+    justify-content: space-between;
+  }
+  .ContrastCard {
+    margin-bottom: 0;
+  }
+}

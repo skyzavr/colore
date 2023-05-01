@@ -1,0 +1,38 @@
+.textInputField {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 10px;
+}
+.textInputField label {
+  color: var(--text);
+  margin-bottom: 10px;
+}
+.textInputField input {
+  background-color: var(--text);
+  color: var(--bgr);
+  border-radius: 5px;
+  padding: 5px;
+  padding-left: 10px;
+  font-size: 1rem;
+}
+@media (min-width: 300px) {
+  .textInputField input {
+    width: 260px;
+  }
+}
+@media (min-width: 375px) {
+  .textInputField input {
+    width: 300px;
+  }
+}
+@media (min-width: 425px) {
+  .textInputField input {
+    min-width: 350px;
+  }
+}
+@media (min-width: 768px) {
+  .textInputField input {
+    min-width: 400px;
+  }
+}

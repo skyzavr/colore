@@ -1,0 +1,39 @@
+@import url('../../../../../colours.css');
+@import url('../../../../../fontSize.css');
+* {
+  color: var(--accent);
+}
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--red);
+  border-radius: 10px;
+  width: 150px;
+  height: 100px;
+  padding: 10px;
+  align-items: center;
+}
+.title {
+  font-size: var(--smallSize--2);
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+.cardInfo {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 80px;
+  margin-top: 5px;
+}
+.infoTitle {
+  font-size: var(--smallSize--2);
+}
+.infoValue {
+  font-size: var(--smallSize--2);
+  font-weight: 600;
+}
+@media (max-width: 1440px) {
+  .wrapper {
+    margin-bottom: 10px;
+  }
+}
