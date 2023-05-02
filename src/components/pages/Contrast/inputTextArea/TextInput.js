@@ -10,7 +10,15 @@ const TextInput = ({ onSetText }) => {
   return (
     <div className={classes.textInputField}>
       <label htmlFor="text">Your text</label>
-      <input id="text" type="text" value={text} onChange={updateTextHandler} />
+      {/* if text.length>110 => show message about it */}
+      {/* fix height style for large amount of letters */}
+      <input
+        id="text"
+        type="text"
+        value={text}
+        onChange={updateTextHandler}
+        maxLength={140}
+      />
     </div>
   );
 };

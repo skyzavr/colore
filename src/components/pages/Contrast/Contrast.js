@@ -30,11 +30,7 @@ const Contrast = ({ title }) => {
           </p>
         </div>
         {/* Cards that shows how bad/good contrast is */}
-        <ContrastField
-          contrastValue={5.21}
-          largeFonts={{ large: '3', stand: '4.5' }}
-          standartFonts={{ large: '4.5', stand: '7' }}
-        />
+        <ContrastField colour={colour} bgrColour={bgr} />
       </div>
       <div className={classes.contrast}>
         <div className={classes.InputField}>

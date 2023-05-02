@@ -9,18 +9,27 @@
 }
 
 .ContrastCard {
-  background-color: var(--red);
   border-radius: 10px;
   width: 150px;
   height: 100px;
   padding: 10px;
+}
+.Great {
+  background-color: var(--green);
+}
+.Good {
+  background-color: var(--yellow);
+}
+.Poor {
+  background-color: var(--red);
 }
 .info {
   font-size: var(--SmallSize--1);
   font-weight: 800;
 }
 .value {
-  margin-top: 20px;
+  margin-top: 10px;
+  margin-bottom: 5px;
   font-size: var(--bigSize--2);
   font-weight: 800;
 }
