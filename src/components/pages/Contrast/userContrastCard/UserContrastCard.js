@@ -25,7 +25,6 @@ const UserContrastCard = ({ textColour, bgrColour, text }) => {
     const max = names.length - 1;
     return names[Math.floor(Math.random() * (max - min + 1) + min)];
   };
-  console.log(textColour, bgrColour);
   useEffect(() => {
     setRandomQuote(randomNumber());
     setRandomName(randomNameGen());

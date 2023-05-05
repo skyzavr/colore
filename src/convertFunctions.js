@@ -64,12 +64,9 @@ export const decimalToHex = (value) => {
 export const rgbToHex = (huePos, satPos, lightPos) => {
   const rgbArray = hslToRgb(huePos, satPos, lightPos);
   let result = '#';
-  console.log(rgbArray);
   for (let i = 0; i < rgbArray.length; i++) {
     result += decimalToHex(rgbArray[i]);
   }
-  // console.log(result);
-  // setHexColour(result);
   return result;
 };
 export const hexToDec = (hexNum) => {
@@ -83,4 +80,9 @@ export const hexToDec = (hexNum) => {
     } else result += Number(hexNum[i]) * Math.pow(16, index - i);
   }
   return result;
+};
+export const getRGB = (hex) => {
+  return [hex.slice(1, 3), hex.slice(3, 5), hex.slice(5)].map((el) =>
+    hexToDec(el)
+  );
 };

@@ -38,10 +38,12 @@ const Contrast = ({ title }) => {
             <InputColour
               onSetCOlour={(data) => setColour(data)}
               text="Text colour"
+              inpColour={colour}
             />
             <InputColour
               onSetCOlour={(data) => setBgr(data)}
               text="Background colour"
+              inpColour={bgr}
             />
           </div>
           <TextInput onSetText={setTextArea} />

@@ -1,13 +1,13 @@
 import './App.css';
 import { createContext, useState } from 'react';
 import Header from './components/ui/header/Header';
-import Home from './components/ui/pages/HomePage/Home';
-import Contrast from './components/ui/pages/Contrast/Contrast';
+import Home from './components/pages/HomePage/Home';
+import Contrast from './components/pages/Contrast/Contrast';
 import { Route, Routes, BrowserRouter as Router } from 'react-router-dom';
-import PalleteGen from './components/ui/pages/HomePage/imgComponents/PaletteGen';
-import ColourConv from './components/ui/pages/HomePage/imgComponents/ColourConv';
-import ContrastChecker from './components/ui/pages/HomePage/imgComponents/ContrastCheck';
-import ImgPalette from './components/ui/pages/HomePage/imgComponents/ImgPalette';
+import PalleteGen from './components/pages/HomePage/imgComponents/PaletteGen';
+import ColourConv from './components/pages/HomePage/imgComponents/ColourConv';
+import ContrastChecker from './components/pages/HomePage/imgComponents/ContrastCheck';
+import ImgPalette from './components/pages/HomePage/imgComponents/ImgPalette';
 
 export const ThemeContext = createContext({});
 const App = () => {
@@ -58,7 +58,10 @@ const App = () => {
               <Route path="/" element={<Home cards={menuList} />} />
               <Route path="/paletteGen" element={<Contrast />} />
               <Route path="/colourConv" element={<Contrast />} />
-              <Route path="/ContrastCheck" element={<Contrast />} />
+              <Route
+                path="/ContrastCheck"
+                element={<Contrast title="Contrast Checker" />}
+              />
               <Route path="/ImagePalette" element={<Contrast />} />
             </Routes>
           </main>
