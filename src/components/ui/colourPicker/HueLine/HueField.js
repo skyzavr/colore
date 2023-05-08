@@ -1,6 +1,7 @@
 import classes from './HueField.module.css';
 import { useEffect, useRef } from 'react';
 const HueField = ({ borderThumb, paddingThumb, onSetHue }) => {
+  // todo: need to remember each position
   const slider = useRef(null);
   const thumb = useRef(null);
   const onMouseMove = (event) => {

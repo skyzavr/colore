@@ -18,17 +18,21 @@ const ContrastField = ({ colour, bgrColour }) => {
       : Math.pow(additionalParam(value), 2.4);
   };
   const getRGB = (hex) => {
-    const arr = [hex.slice(1, 3), hex.slice(3, 5), hex.slice(5)].map((el) =>
-      hexToDec(el)
+    // const arr = [hex.slice(1, 3), hex.slice(3, 5), hex.slice(5)].map((el) =>
+    //   hexToDec(el)
+    // );
+    // let R, G, B;
+    // const Rsrgb = arr[0] / 255;
+    // const Gsrgb = arr[1] / 255;
+    // const Bsrgb = arr[2] / 255;
+    // R = getParam(Rsrgb);
+    // G = getParam(Gsrgb);
+    // B = getParam(Bsrgb);
+    // return [R, G, B];
+    const arr = [hex.slice(1, 3), hex.slice(3, 5), hex.slice(5)].map(
+      (el) => hexToDec(el) / 255
     );
-    let R, G, B;
-    const Rsrgb = arr[0] / 255;
-    const Gsrgb = arr[1] / 255;
-    const Bsrgb = arr[2] / 255;
-    R = getParam(Rsrgb);
-    G = getParam(Gsrgb);
-    B = getParam(Bsrgb);
-    return [R, G, B];
+    return arr.map((el) => getParam(el));
   };
   const getLuminance = (color) => {
     const rgbArr = getRGB(color);
