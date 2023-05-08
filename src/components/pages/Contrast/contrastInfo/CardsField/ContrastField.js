@@ -18,17 +18,6 @@ const ContrastField = ({ colour, bgrColour }) => {
       : Math.pow(additionalParam(value), 2.4);
   };
   const getRGB = (hex) => {
-    // const arr = [hex.slice(1, 3), hex.slice(3, 5), hex.slice(5)].map((el) =>
-    //   hexToDec(el)
-    // );
-    // let R, G, B;
-    // const Rsrgb = arr[0] / 255;
-    // const Gsrgb = arr[1] / 255;
-    // const Bsrgb = arr[2] / 255;
-    // R = getParam(Rsrgb);
-    // G = getParam(Gsrgb);
-    // B = getParam(Bsrgb);
-    // return [R, G, B];
     const arr = [hex.slice(1, 3), hex.slice(3, 5), hex.slice(5)].map(
       (el) => hexToDec(el) / 255
     );
@@ -59,9 +48,7 @@ const ContrastField = ({ colour, bgrColour }) => {
         className={classes[`ContrastCard`] + ' ' + classes[`${conrastMark}`]}
       >
         <div className={classes.info}>Contrast</div>
-        <div className={classes.value}>
-          {conrastRatio % 1 === 0 ? conrastRatio : conrastRatio.toFixed(1)}
-        </div>
+        <div className={classes.value}>{conrastRatio.toFixed(1)}</div>
         <div className={classes.desc}>{conrastMark}</div>
       </div>
       <Card title="Large text" ratio={conrastRatio} AA="3" AAA="4.5" />

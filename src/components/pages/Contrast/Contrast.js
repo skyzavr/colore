@@ -8,9 +8,9 @@ import UserContrastCard from './userContrastCard/UserContrastCard';
 const Contrast = ({ title }) => {
   const [colour, setColour] = useState('#242627');
   const [bgr, setBgr] = useState('#3787FF');
-  const [text, setText] = useState(
-    'No matter what, you keep finding something to fight for'
-  );
+  const quote =
+    'I found it — an eternity. This is the sun merged with the sea.';
+  const [text, setText] = useState(quote);
   const setTextArea = (data) => {
     setText(data);
   };
@@ -23,11 +23,8 @@ const Contrast = ({ title }) => {
             Check the contrast of the text colour and the background colour.
             Choose a background color and a text color to check it out.
           </p>
-          <p>You can see it in our random text or enter your own. </p>
-          <p>
-            You can also generate a color to achieve better results. You can
-            also lock the color and generate the desired one.
-          </p>
+          <p>You can see it in our text or enter your own. </p>
+          <p>You can also generate a color.</p>
         </div>
         {/* Cards that shows how bad/good contrast is */}
         <ContrastField colour={colour} bgrColour={bgr} />
@@ -46,7 +43,7 @@ const Contrast = ({ title }) => {
               inpColour={bgr}
             />
           </div>
-          <TextInput onSetText={setTextArea} />
+          <TextInput onSetText={setTextArea} quote={text} />
         </div>
         {/* UserContrastCard - based on user's colours and text  */}
         <UserContrastCard textColour={colour} bgrColour={bgr} text={text} />

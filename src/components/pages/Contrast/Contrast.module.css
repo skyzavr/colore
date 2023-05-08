@@ -4,7 +4,7 @@
   border-radius: 10px;
   padding: 20px;
   margin-top: 40px;
-  max-width: 1600px;
+  max-width: 1400px;
   display: flex;
 }
 /* Left side */
@@ -43,9 +43,6 @@
     margin: 20px;
     flex-direction: column;
   }
-  .contrastInfo {
-    width: 100%;
-  }
   .colourInputField {
     flex-direction: column;
   }
@@ -53,6 +50,12 @@
 @media (min-width: 475px) {
   .colourInputField {
     flex-direction: row;
+  }
+}
+@media (min-width: 580px) {
+  .contrast,
+  .contrastInfo {
+    margin: 10px auto;
   }
 }
 @media (min-width: 1024px) {
@@ -65,5 +68,10 @@
 @media (min-width: 1190px) {
   .wrapper {
     flex-direction: row;
+  }
+}
+@media (min-width: 1440px) {
+  .wrapper {
+    margin: 20px auto;
   }
 }

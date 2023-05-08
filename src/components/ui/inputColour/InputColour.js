@@ -2,6 +2,7 @@ import { useEffect, useState, useRef } from 'react';
 import classes from './InputColour.module.css';
 import ColourPicker from '../colourPicker/ColourPicker';
 import { getRGB } from '../../../convertFunctions';
+import GenerateBtn from '../btn/generateBtn/GenerateBtn';
 
 const InputColour = ({ onSetCOlour, text, inpColour }) => {
   const btnRef = useRef(null);
@@ -15,7 +16,6 @@ const InputColour = ({ onSetCOlour, text, inpColour }) => {
   });
   const [isPickerOpen, setIsPickerOpen] = useState(false);
   const setColourHandler = (data) => {
-    console.log(data);
     setColour({ ...colour, hex: data });
     updateColourPos(data);
   };
@@ -96,12 +96,15 @@ const InputColour = ({ onSetCOlour, text, inpColour }) => {
         <div className={classes.wrapper}>
           <span className={classes.colorTitle}>{colour.hex}</span>
           {/* if there is bad contrast=>add border         */}
-          <div
-            className={classes.colorRect}
-            style={{ backgroundColor: `${colour.hex}` }}
-            onClick={colorPickerHandler}
-            ref={btnColourRef}
-          ></div>
+          <div className={classes.inpWrapper}>
+            <GenerateBtn clickFunc={() => setColourHandler(generateHex())} />
+            <div
+              className={classes.colorRect}
+              style={{ backgroundColor: `${colour.hex}` }}
+              onClick={colorPickerHandler}
+              ref={btnColourRef}
+            ></div>
+          </div>
         </div>
       </div>
       {isPickerOpen && (
