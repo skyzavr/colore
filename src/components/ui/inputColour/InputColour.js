@@ -49,7 +49,6 @@ const InputColour = ({ onSetCOlour, text, inpColour }) => {
     onSetCOlour(col);
     //get arr of rgb colours
     const rgbArr = getRGB(col);
-    console.log(colour.hex, rgbArr);
     let R = rgbArr[0] / 255;
     let G = rgbArr[1] / 255;
     let B = rgbArr[2] / 255;

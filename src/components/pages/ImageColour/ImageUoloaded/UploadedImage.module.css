@@ -1,0 +1,83 @@
+.paramWrapper {
+  background: var(--addColour);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: stretch;
+  border-radius: 15px;
+  padding: 60px;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.UploadWrapper {
+  width: 600px;
+  height: 300px;
+}
+
+img {
+  height: 100%;
+  transition: 0.3s ease-in-out;
+  border-radius: 10px;
+  /* width: 100%; */
+}
+.textInfo p {
+  font-size: var(--smallSize--2);
+  text-align: left;
+  padding-bottom: 10px;
+}
+.title {
+  font-size: var(--medSize--3);
+  margin-bottom: var(--bigSize--2);
+  text-align: left;
+}
+input[type='file'] {
+  display: none;
+}
+.textInfo {
+  font-size: var(--smallSize--2);
+}
+.title,
+.textInfo,
+.textInfo p,
+.uploadImageBtn label {
+  color: var(--text);
+}
+.uploadInfo,
+.uploadInfo span {
+  color: var(--gray);
+}
+.dragWrapper {
+  height: 300px;
+  position: relative;
+}
+.dragWrapper:hover img {
+  filter: brightness(20%);
+  transition: 0.3s ease-in-out;
+}
+
+.dragWrapper :hover {
+  cursor: pointer;
+}
+.dragWrapper:hover .uploadInfo {
+  opacity: 1;
+  transition: 0.3s ease-in-out;
+  /* fill: rgba(0, 0, 0, 0.9); */
+}
+.uploadInfo {
+  opacity: 0;
+  transition: 0.3s ease-in-out;
+  position: absolute;
+  top: 50%;
+}
+.imgPlaceHolder {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 100%;
+  margin-bottom: 20px;
+  position: absolute;
+  height: 100%;
+  align-items: center;
+  top: 0%;
+}

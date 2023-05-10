@@ -1,0 +1,78 @@
+.paramWrapper {
+  background: var(--addColour);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: stretch;
+  border-radius: 15px;
+  padding: 60px;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+.UploadWrapper {
+  width: 600px;
+  height: 300px;
+}
+.title {
+  font-size: var(--medSize--3);
+  margin-bottom: var(--bigSize--2);
+  text-align: left;
+}
+.container {
+  /* z-index: 10000000; */
+  width: 600px;
+  height: 300px;
+  background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='4' ry='4' stroke='%23FD5D5DFF' stroke-width='3' stroke-dasharray='19' stroke-dashoffset='15' stroke-linecap='square'/%3e%3c/svg%3e");
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.containerHover {
+  z-index: 10000000;
+  width: 600px;
+  height: 300px;
+  background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='4' ry='4' stroke='%233787ff' stroke-width='3' stroke-dasharray='19' stroke-dashoffset='15' stroke-linecap='square'/%3e%3c/svg%3e");
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+/* common */
+
+.title,
+.textInfo,
+.uploadInfo,
+.uploadInfo span,
+.uploadImageBtn label {
+  color: var(--text);
+}
+input[type='file'] {
+  display: none;
+}
+.uploadImageBtn {
+  width: 200px;
+  height: 30px;
+  border: 1px solid var(--text);
+  border-radius: 8px;
+  position: relative;
+}
+.uploadImageBtn label:hover {
+  color: var(--addColour--2);
+}
+.uploadImageBtn label {
+  cursor: pointer;
+  height: 30px;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  line-height: 1;
+}
+.textInfo {
+  font-size: var(--smallSize--2);
+}

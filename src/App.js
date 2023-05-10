@@ -8,7 +8,7 @@ import PalleteGen from './components/pages/HomePage/imgComponents/PaletteGen';
 import ColourConv from './components/pages/HomePage/imgComponents/ColourConv';
 import ContrastChecker from './components/pages/HomePage/imgComponents/ContrastCheck';
 import ImgPalette from './components/pages/HomePage/imgComponents/ImgPalette';
-
+import ImageColour from './components/pages/ImageColour/ImageColour';
 export const ThemeContext = createContext({});
 const App = () => {
   const menuList = [
@@ -62,7 +62,12 @@ const App = () => {
                 path="/ContrastCheck"
                 element={<Contrast title="Contrast Checker" />}
               />
-              <Route path="/ImagePalette" element={<Contrast />} />
+              <Route
+                path="/ImagePalette"
+                element={
+                  <ImageColour title="Create a palette based on the image" />
+                }
+              />
             </Routes>
           </main>
         </div>
