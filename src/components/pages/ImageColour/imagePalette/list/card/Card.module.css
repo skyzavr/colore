@@ -1,0 +1,29 @@
+.card,
+.msg {
+  width: 220px;
+  height: 66px;
+}
+
+.msg {
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  display: flex;
+  transition: 0.3s ease-in-out;
+  justify-content: center;
+  align-items: center;
+}
+.wrapper:hover .msg {
+  opacity: 1;
+  color: #fff;
+  transition: 0.3s ease-in-out;
+}
+.wrapper:hover .card {
+  filter: brightness(40%);
+}
+.wrapper {
+  position: relative;
+}
+.wrapper:hover {
+  cursor: pointer;
+}
