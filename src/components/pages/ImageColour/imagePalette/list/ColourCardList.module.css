@@ -1,0 +1,21 @@
+.cardList {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+.cardList li {
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 30px;
+}
+.cardList li p {
+  margin-top: 10px;
+  color: var(--text);
+}
+.param {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: baseline;
+}
