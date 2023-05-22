@@ -1,0 +1,13 @@
+.btns {
+  display: flex;
+  flex-direction: row;
+  margin: 10px;
+}
+.btns div {
+  color: var(--text);
+  margin-right: 10px;
+}
+.btns div:hover {
+  cursor: pointer;
+  color: var(--addColour--2);
+}
