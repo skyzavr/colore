@@ -19,3 +19,18 @@
   justify-content: space-between;
   align-items: baseline;
 }
+.btns {
+  display: flex;
+}
+@media (min-width: 300px) {
+  .btns {
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+@media (min-width: 600px) {
+  .btns {
+    flex-direction: row;
+    justify-content: center;
+  }
+}

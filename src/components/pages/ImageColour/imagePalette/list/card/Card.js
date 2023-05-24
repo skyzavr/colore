@@ -1,35 +1,34 @@
-import { useState, useContext, useEffect } from 'react';
+import { useContext, useRef } from 'react';
 import classes from './Card.module.css';
 import { ThemeContext } from '../../../../../../App';
-import {
-  contrastColour,
-  getRGB,
-  rgbToSl,
-  getLuminosity,
-} from '../../../../../../convertFunctions';
+import { contrastColour } from '../../../../../../convertFunctions';
+import { ColourContext } from '../../../../../../App';
 const Card = ({ bgrColour }) => {
   const { theme } = useContext(ThemeContext);
-  const [isError, setIsError] = useState(false);
+  const { setColour } = useContext(ColourContext);
+  const CardRef = useRef();
   const copyColorHandler = () => {
+    const cardTop = CardRef.current.offsetTop;
     const text = bgrColour;
-    document.body.addEventListener('click', () => {
-      navigator.clipboard.writeText(text).then(
-        () => {
-          //sucsess
-          setIsError(false);
-        },
-        () => {
-          //error
-          setIsError(true);
-        }
-      );
+    let type, message;
+    async function copyToClipboard(msg) {
+      try {
+        await navigator.clipboard.writeText(msg);
+        type = 'success';
+        message = `The colour ${msg} has been copied!`;
+      } catch {
+        type = 'error';
+        message = `There is some problem...`;
+      }
+      return { type, message };
+    }
+    copyToClipboard(text).then((el) => {
+      setColour({
+        ...el,
+        id: Math.floor(Math.random() * 10000),
+        cardTop,
+      });
     });
-    //both popUP
-    /*
-    todo: when text was copied-> add message. that dissaper in 3 seconds
-    //
-    todo:if i didn't get permission for this (navigator), show the error
-    */
   };
   const setBorder = () => {
     const currentTheme = theme === 'light' ? '#ffffff' : '#131313';
@@ -38,7 +37,7 @@ const Card = ({ bgrColour }) => {
     return rgba;
   };
   return (
-    <div className={classes.wrapper} onClick={copyColorHandler}>
+    <div className={classes.wrapper} onClick={copyColorHandler} ref={CardRef}>
       <div
         className={classes.card}
         style={{

@@ -14,6 +14,7 @@ const ColourCardList = ({
   const [listLen, setListLen] = useState(
     list.length < length ? list.length : length
   );
+
   const moreInfoHadnler = () => {};
   const ShowMore = () => {
     const value = listLen + defaultAmount;
@@ -30,6 +31,7 @@ const ColourCardList = ({
     setListLen(value);
     onShowHandler({ value: defaultAmount, type: param });
   };
+
   return (
     <div className={classes.wrapper}>
       <ul className={classes.cardList}>
