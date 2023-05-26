@@ -1,0 +1,22 @@
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+.info {
+  display: flex;
+  flex-direction: row;
+}
+.info div {
+  font-size: var(--smallSize--1);
+}
+.title {
+  font-weight: 500;
+  margin-right: 30px;
+}
+.hexName {
+  font-weight: 900;
+}
+.closeBtn {
+}

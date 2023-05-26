@@ -1,0 +1,23 @@
+.wrapper {
+}
+.set {
+}
+.title {
+  text-align: left;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: var(--smallSize--2);
+}
+.list {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.listItem {
+  width: 90px;
+  height: 50px;
+  background-color: #74e363;
+}
+.listItem:not(.set :last-child) {
+  margin-right: 30px;
+}
