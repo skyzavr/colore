@@ -19,5 +19,5 @@
   background-color: #74e363;
 }
 .listItem:not(.set :last-child) {
-  margin-right: 30px;
+  margin-right: 10px;
 }
