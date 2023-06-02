@@ -1,6 +1,5 @@
 .wrapper {
-}
-.set {
+  margin-top: 50px;
 }
 .title {
   text-align: left;
@@ -9,15 +8,19 @@
   font-size: var(--smallSize--2);
 }
 .list {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(90px, max-content));
+  gap: 20px;
 }
 .listItem {
   width: 90px;
   height: 50px;
-  background-color: #74e363;
 }
 .listItem:not(.set :last-child) {
   margin-right: 10px;
+}
+@media (max-width: 871px) {
+  .listItem {
+    margin-bottom: 10px;
+  }
 }

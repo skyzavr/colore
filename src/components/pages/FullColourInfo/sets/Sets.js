@@ -4,7 +4,7 @@ import { getRGB, decimalToHex } from '../../../../convertFunctions';
 
 const Sets = ({ colour }) => {
   const [colourSets, setColourSets] = useState();
-  const [setsTitle, setSetsTitle] = useState([
+  const setsTitle = [
     'Tints',
     'Shades',
     'Tones',
@@ -14,7 +14,7 @@ const Sets = ({ colour }) => {
     'Blends by red and green',
     'Blends by red and blue',
     'Blends by green and blue',
-  ]);
+  ];
 
   const getFactor = () => {
     const len = 7;
@@ -177,7 +177,6 @@ const Sets = ({ colour }) => {
 
   useEffect(() => {
     updateSets();
-    console.log(colourSets);
   }, [colour]);
   return (
     <div className={classes.wrapper}>
