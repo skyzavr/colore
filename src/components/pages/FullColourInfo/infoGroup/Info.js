@@ -6,7 +6,7 @@ const Info = ({ colour }) => {
         <div className={classes.title}>Color information</div>
         <div className={classes.hexName}>{colour}</div>
       </div>
-      <div className={classes.c}>Close</div>
+      <div className={classes.closeBtn}>Close</div>
     </div>
   );
 };
