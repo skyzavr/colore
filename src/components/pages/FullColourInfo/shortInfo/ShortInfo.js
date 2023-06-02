@@ -1,35 +1,32 @@
 import classes from './shortInfo.module.css';
+import { rgbToHSL, getRGB, rgbToCMyk } from '../../../../convertFunctions';
+
+import { useState, useEffect } from 'react';
+import ListOfConvertedValues from './convertedValuesField/ListOfConvertedValues';
 const ShortInfo = ({ colour }) => {
+  const [colourSystems, setColourSystems] = useState({ hex: colour });
+  const getAllColoursSystemValues = () => {
+    const RGB = getRGB(colour);
+    const CMYK = rgbToCMyk(RGB);
+    const HSL = rgbToHSL(RGB);
+    setColourSystems({
+      HEX: colour,
+      HSL: `${HSL[0]}, ${HSL[1]}%, ${HSL[2]}%`,
+      CMYK: `${CMYK[0]}, ${CMYK[1]}, ${CMYK[2]}, ${CMYK[3]}`,
+      RGB: `${RGB[0]}, ${RGB[1]}, ${RGB[2]}`,
+    });
+  };
+  const systems = ['HEX', 'HSL', 'CMYK', 'RGB'];
+  useEffect(() => {
+    getAllColoursSystemValues();
+  }, [colour]);
   return (
     <div className={classes.wrapper}>
       <div
         className={classes.colouredCard}
         style={{ backgroundColor: `${colour}` }}
       ></div>
-      {/* separate component */}
-      <div className={classes.container}>
-        <div className={classes.colourSystemInfo}>
-          <div className={classes.item}>
-            <div className={classes.systemName}>HEX:</div>
-            <div className={classes.systemValue}>{colour}</div>
-          </div>
-          <div className={classes.item}>
-            <div className={classes.systemName}>RGB:</div>
-            <div className={classes.systemValue}>249, 227, 204 </div>
-          </div>
-        </div>
-
-        <div className={classes.colourSystemInfo}>
-          <div className={classes.item}>
-            <div className={classes.systemName}>HSL:</div>
-            <div className={classes.systemValue}>31, 79%, 89%</div>
-          </div>
-          <div className={classes.item}>
-            <div className={classes.systemName}>CMYK</div>
-            <div className={classes.systemValue}>24, 24, 24</div>
-          </div>
-        </div>
-      </div>
+      <ListOfConvertedValues ValuesList={colourSystems} TitlesList={systems} />
     </div>
   );
 };
