@@ -3,10 +3,20 @@
   flex-direction: column;
   background-color: var(--bgr);
   border: 1px solid var(--text);
-  padding: 40px;
   max-width: 1000px;
   margin: 30px auto;
 }
 .wrapper * {
   color: var(--text);
+}
+
+@media (min-width: 300px) {
+  .wrapper {
+    padding: 20px;
+  }
+}
+@media (min-width: 365px) {
+  .wrapper {
+    padding: 40px;
+  }
 }
