@@ -1,16 +1,15 @@
 .wrapper {
+  margin-top: 50px;
 }
 .title {
   font-size: var(--smallSize--1);
   color: #fff;
   text-align: left;
-  margin-top: 40px;
   margin-bottom: 20px;
 }
 .list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  display: grid;
+  gap: 20px;
 }
 .item {
   display: flex;
@@ -19,7 +18,7 @@
   margin-bottom: 40px;
 }
 .card {
-  width: 290px;
+  width: 300px;
   height: 120px;
   display: flex;
   align-items: center;
@@ -42,4 +41,20 @@
 }
 .row div {
   font-size: var(--smallSize--2);
+}
+@media (min-width: 300px) {
+  .list {
+    grid-template-columns: repeat(auto-fill, minmax(278px, max-content));
+  }
+  .card {
+    width: 278px;
+  }
+}
+@media (min-width: 345px) {
+  .list {
+    grid-template-columns: repeat(auto-fill, minmax(290px, max-content));
+  }
+  .card {
+    width: 290px;
+  }
 }
