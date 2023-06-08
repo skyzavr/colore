@@ -3,7 +3,7 @@ import classes from './ColourCardList.module.css';
 import MoreInfoIcon from './MoreInfoIcon';
 import Card from './card/Card';
 import Button from '../../../../ui/btn/button/Button';
-
+import { Link } from 'react-router-dom';
 const ColourCardList = ({
   list,
   length,
@@ -14,8 +14,6 @@ const ColourCardList = ({
   const [listLen, setListLen] = useState(
     list.length < length ? list.length : length
   );
-
-  const moreInfoHadnler = () => {};
   const ShowMore = () => {
     const value = listLen + defaultAmount;
     const newValue = value >= list.length ? list.length : value;
@@ -31,7 +29,9 @@ const ColourCardList = ({
     setListLen(value);
     onShowHandler({ value: defaultAmount, type: param });
   };
-
+  const setLocalStorageColour = (value) => {
+    localStorage.setItem('colour', value);
+  };
   return (
     <div className={classes.wrapper}>
       <ul className={classes.cardList}>
@@ -40,7 +40,13 @@ const ColourCardList = ({
             <Card bgrColour={el} />
             <div className={classes.param}>
               <p>{el}</p>
-              <MoreInfoIcon clickHandler={moreInfoHadnler} />
+              <Link
+                target={'_blank'}
+                to={'/ColourInfo'}
+                onClick={() => setLocalStorageColour(el)}
+              >
+                <MoreInfoIcon />
+              </Link>
             </div>
           </li>
         ))}
