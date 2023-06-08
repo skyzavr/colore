@@ -1,8 +1,9 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import classes from './sets.module.css';
-import { getRGB, decimalToHex } from '../../../../convertFunctions';
-
+import { getRGB, HexByRgb } from '../../../../convertFunctions';
+import { ColourContext } from '../../../../App';
 const Sets = ({ colour }) => {
+  const { setColour } = useContext(ColourContext);
   const [colourSets, setColourSets] = useState();
   const setsTitle = [
     'Tints',
@@ -35,7 +36,7 @@ const Sets = ({ colour }) => {
       let R = Math.round(rgb[0] + (255 - rgb[0]) * factor[i]);
       let G = Math.round(rgb[1] + (255 - rgb[1]) * factor[i]);
       let B = Math.round(rgb[2] + (255 - rgb[2]) * factor[i]);
-      tintList.push({ r: R, g: G, b: B });
+      tintList.push(HexByRgb([R, G, B]));
     }
     return tintList;
   };
@@ -46,11 +47,7 @@ const Sets = ({ colour }) => {
       let R = Math.round(rgb[0] * (1 - factor[i]));
       let G = Math.round(rgb[1] * (1 - factor[i]));
       let B = Math.round(rgb[2] * (1 - factor[i]));
-      shadesList.push({
-        r: R,
-        g: G,
-        b: B,
-      });
+      shadesList.push(HexByRgb([R, G, B]));
     }
     return shadesList;
   };
@@ -59,21 +56,15 @@ const Sets = ({ colour }) => {
       G = Math.round(rgb[1]),
       B = Math.round(rgb[2]);
     const tonesList = [];
-    tonesList.push({ r: R, g: G, b: B });
+    tonesList.push(HexByRgb([R, G, B]));
     for (let i = 0; i < 7; i++) {
-      // fix this algorythm
       let newR = (128 - R) / 7;
       let newG = (128 - G) / 7;
       let newB = (128 - B) / 7;
       R = Math.floor(R + newR);
       G = Math.floor(G + newG);
       B = Math.floor(B + newB);
-      tonesList.push({
-        r: R,
-        g: G,
-        b: B,
-        hex: decimalToHex(R) + decimalToHex(G) + decimalToHex(B),
-      });
+      tonesList.push(HexByRgb([R, G, B]));
     }
     return tonesList;
   };
@@ -106,7 +97,7 @@ const Sets = ({ colour }) => {
       }
       blendList.push(applyReduce([...arr, ...list]));
     }
-    return blendList;
+    return blendList.map((el) => HexByRgb([el.r, el.g, el.b]));
   };
   const updateSets = () => {
     const rgb = getRGB(colour);
@@ -172,9 +163,25 @@ const Sets = ({ colour }) => {
     for (let i = 0; i < blendSets.length; i++) {
       newList.push(blends(...blendSets[i]));
     }
-    setColourSets((prev) => (prev = newList));
+    setColourSets(newList);
   };
-
+  const onSetColourHandler = (value) => {
+    setColour({
+      colour: value,
+      type: 'success',
+      message: `The colour ${value} has been copied!`,
+      id: Math.floor(Math.random() * 10000),
+    });
+  };
+  const uniqueKey = () => {
+    const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    const length = 12;
+    let result = '';
+    while (result.length <= length) {
+      result += alphabet[Math.floor(Math.random() * alphabet.length)];
+    }
+    return result;
+  };
   useEffect(() => {
     updateSets();
   }, [colour]);
@@ -182,17 +189,15 @@ const Sets = ({ colour }) => {
     <div className={classes.wrapper}>
       {colourSets &&
         colourSets.map((el, ind) => (
-          <div className={classes.set} key={Math.floor(Math.random() * 1000)}>
+          <div className={classes.set} key={uniqueKey()}>
             <div className={classes.title}>{setsTitle[ind]}</div>
-            <div
-              className={classes.list}
-              key={Math.floor(Math.random() * 1000)}
-            >
+            <div className={classes.list}>
               {el.map((val) => (
                 <div
-                  style={{ background: `rgb(${val.r},${val.g},${val.b})` }}
+                  style={{ background: val }}
                   className={classes.listItem}
-                  key={Math.floor(Math.random() * 1000)}
+                  key={uniqueKey() + val}
+                  onClick={() => onSetColourHandler(val)}
                 ></div>
               ))}
             </div>
