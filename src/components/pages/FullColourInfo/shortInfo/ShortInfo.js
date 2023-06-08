@@ -11,7 +11,7 @@ const ShortInfo = ({ colour }) => {
     const HSL = rgbToHSL(RGB);
     setColourSystems({
       HEX: colour,
-      HSL: `${HSL[0]}, ${HSL[1]}%, ${HSL[2]}%`,
+      HSL: `${HSL[0]}, ${HSL[1]}, ${HSL[2]}`,
       CMYK: `${CMYK[0]}, ${CMYK[1]}, ${CMYK[2]}, ${CMYK[3]}`,
       RGB: `${RGB[0]}, ${RGB[1]}, ${RGB[2]}`,
     });

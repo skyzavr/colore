@@ -4,6 +4,7 @@
 }
 .colouredCard {
   height: 105px;
+  border: 1px solid var(--text);
 }
 @media (min-width: 300px) {
   .colouredCard {
