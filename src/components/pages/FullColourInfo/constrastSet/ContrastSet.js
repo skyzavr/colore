@@ -57,6 +57,15 @@ const ContrastSet = ({ colour }) => {
       ...settingUp(colour, backgroundList),
     ]);
   };
+  const uniqueKey = () => {
+    const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    const length = 12;
+    let result = '';
+    while (result.length <= length) {
+      result += alphabet[Math.floor(Math.random() * alphabet.length)];
+    }
+    return result;
+  };
   useEffect(() => {
     updateListOfColours();
   }, [colour]);
@@ -65,7 +74,7 @@ const ContrastSet = ({ colour }) => {
       <div className={classes.title}>Take a look at these combinations</div>
       <div className={classes.list}>
         {listOfContrasts.map((el) => (
-          <div className={classes.item} key={el.id}>
+          <div className={classes.item} key={uniqueKey()}>
             <div style={{ background: el.style.bgr }} className={classes.card}>
               <div style={{ color: el.style.color }}>
                 Contrast ratio {el.ratio}
