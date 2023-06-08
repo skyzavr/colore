@@ -1,0 +1,17 @@
+.title,
+.colour {
+  color: var(--text);
+}
+.title {
+  font-size: var(--smallSize--1);
+  text-align: left;
+  margin: 10px;
+}
+.colourWrapper {
+  max-width: 1440px;
+  margin: 30px auto;
+}
+.wrapper {
+  display: flex;
+  flex-direction: column;
+}

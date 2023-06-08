@@ -1,6 +1,6 @@
-const MoreInfoIcon = ({ clickHandler }) => {
+const MoreInfoIcon = () => {
   return (
-    <div onClick={clickHandler}>
+    <div>
       <svg
         width="11"
         height="17"

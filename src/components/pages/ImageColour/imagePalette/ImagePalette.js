@@ -9,7 +9,6 @@ const ImagePalette = ({ rgbList }) => {
   const [darkColours, setDarkColours] = useState([]);
   const [colouredList, setColouredList] = useState([]);
   const [coloured, setColoured] = useState([]);
-
   const sortRgb = (list, param) => {
     return list.sort(function (a, b) {
       if (a[param] < b[param]) {
@@ -101,22 +100,18 @@ const ImagePalette = ({ rgbList }) => {
   };
   const getLightColours = (list) => {
     const lightList = [];
-    let s, l;
     for (let i = 0; i < list.length; i++) {
-      s = list[i].sat;
-      l = list[i].lum;
-      if (l > 75) lightList.push(list[i].hex);
+      let lum = list[i].lum;
+      if (lum > 75) lightList.push(list[i].hex);
     }
     return lightList;
   };
   const getDarkColours = (list) => {
     const darkList = [];
-    let l;
     for (let i = 0; i < list.length; i++) {
-      l = list[i].lum;
-      if (l < 8.5) darkList.push(list[i].hex);
+      let lum = list[i].lum;
+      if (lum < 8.5) darkList.push(list[i].hex);
     }
-
     return darkList;
   };
   const updateObj = (obj, objName, value) => {
@@ -210,7 +205,7 @@ const ImagePalette = ({ rgbList }) => {
         <div className={classes.wrapper}>
           <div className={classes.colourOverview}>
             <div className={classes.title}>We chose these colours for you</div>
-            <ColourCardList list={colouredList} />
+            <ColourCardList list={colouredList} length={10} />
           </div>
         </div>
       )}
