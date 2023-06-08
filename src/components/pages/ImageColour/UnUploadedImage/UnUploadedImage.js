@@ -1,7 +1,6 @@
 import ImagePrev from '../ImagePrev';
 import classes from './UnUploadedImage.module.css';
 const UnUploadedImage = ({
-  title,
   drag,
   dragStartHandler,
   dragLeaveHandler,
@@ -11,7 +10,7 @@ const UnUploadedImage = ({
   return (
     <div className={classes.paramWrapper}>
       <div className={classes.Info}>
-        <div className={classes.title}>{title}</div>
+        <div className={classes.title}>Create a palette based on the image</div>
         <div className={classes.textInfo}>
           Define colours in any photo. Just drag an image or upload it.
         </div>

@@ -1,16 +1,17 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import classes from './ImageColour.module.css';
 import UploadedImage from './ImageUploaded/UploadedImage';
 import UnUploadedImage from './UnUploadedImage/UnUploadedImage';
 import ImagePalette from './imagePalette/ImagePalette';
-
-const ImageColour = ({ title }) => {
+import { ColourContext } from '../../../App';
+import Notification from '../../ui/notification/Notification';
+const ImageColour = () => {
+  const { colour } = useContext(ColourContext);
   const [drag, setDrag] = useState(false);
   const [imageColours, setImageColours] = useState([]);
   const [rgbList, setRgbList] = useState([]);
   const [uploadedImg, setUploadedImg] = useState(null);
-  const [imgWidth, setImgWidth] = useState();
-  const [imgHeight, setImgHeight] = useState();
+  const [isLoading, setIsLoading] = useState(false);
   const dragHandler = (event) => {
     event.preventDefault();
     setDrag(false);
@@ -21,6 +22,7 @@ const ImageColour = ({ title }) => {
     canvasImage(event.target.files[0]);
   };
   const canvasImage = (file) => {
+    setIsLoading(true);
     const img = new Image();
     const fileReader = new FileReader();
     fileReader.onload = () => {
@@ -29,8 +31,6 @@ const ImageColour = ({ title }) => {
         const canvas = document.createElement('canvas');
         canvas.width = img.width;
         canvas.height = img.height;
-        setImgHeight(img.height);
-        setImgWidth(img.width);
         const ctx = canvas.getContext('2d');
         ctx.drawImage(img, 0, 0);
         //draw image that we got
@@ -67,6 +67,7 @@ const ImageColour = ({ title }) => {
   };
   useEffect(() => {
     gettingArrayOfCOlours();
+    setIsLoading(false);
   }, [imageColours]);
   return (
     <div className={classes.wrapper}>
@@ -80,7 +81,6 @@ const ImageColour = ({ title }) => {
         />
       ) : (
         <UnUploadedImage
-          title={title}
           drag={drag}
           dragStartHandler={dragStartHandler}
           dragLeaveHandler={dragLeaveHandler}
@@ -88,8 +88,14 @@ const ImageColour = ({ title }) => {
           fileSelectedHandler={fileSelectedHandler}
         />
       )}
-
-      <ImagePalette rgbList={rgbList} />
+      {isLoading ? (
+        <div
+          className={classes.loading}
+        >{`We are processing, please, wait :)`}</div>
+      ) : (
+        <ImagePalette rgbList={rgbList} />
+      )}
+      {Object.entries(colour).length !== 0 && <Notification param={colour} />}
     </div>
   );
 };
