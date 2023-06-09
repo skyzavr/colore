@@ -1,0 +1,17 @@
+.information {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  justify-content: space-around;
+}
+.title {
+  color: var(--text);
+  font-size: var(--medSize--1);
+}
+.btnArea {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+}
