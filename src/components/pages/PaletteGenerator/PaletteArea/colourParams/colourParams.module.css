@@ -1,0 +1,23 @@
+.colourParams {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 30px;
+  padding-right: 10px;
+  padding-left: 10px;
+  width: 100%;
+  justify-content: space-between;
+}
+.colourName {
+  font-size: var(--smallSize--1);
+  color: var(--text);
+}
+.colourBtns {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.btnItem {
+  margin-left: 8px;
+  margin-right: 8px;
+}
