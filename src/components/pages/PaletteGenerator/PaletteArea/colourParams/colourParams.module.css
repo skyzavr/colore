@@ -20,4 +20,16 @@
 .btnItem {
   margin-left: 8px;
   margin-right: 8px;
+  color: var(--text);
+}
+.btnItem:hover * {
+  cursor: pointer;
+  fill: var(--addColour--2);
+}
+.default * {
+  fill: var(--text);
+}
+.locked * {
+  fill: var(--text);
+  opacity: 0.5;
 }
