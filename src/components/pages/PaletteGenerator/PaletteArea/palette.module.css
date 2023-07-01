@@ -15,10 +15,9 @@
   width: 100%;
   justify-content: center;
 }
-/*  */
-.card {
+.btnArea {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: flex-end;
   align-items: center;
-  width: 280px;
 }

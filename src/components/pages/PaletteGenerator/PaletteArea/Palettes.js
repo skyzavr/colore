@@ -1,104 +1,135 @@
-import DeleteIcon from '../../../ui/Icons/DeleteIcon';
-import FillIcon from '../../../ui/Icons/FillIcon';
-import GenerateIcon from '../../../ui/Icons/GenerateIcon';
-import LockIcon from '../../../ui/Icons/LockIcon';
-import SaveIcon from '../../../ui/Icons/SaveIcon';
-import Button from '../../../ui/btn/button/Button';
-import ColourCard from './colourCard/ColourCard';
-import ColourParams from './colourParams/ColourParams';
-import ColourSet from './colourSet/ColourSet';
 import classes from './palette.module.css';
+import { useEffect, useState, useContext } from 'react';
+import { ColourContext } from '../../../../App';
+import { createPortal } from 'react-dom';
+import {
+  getRGB,
+  rgbToHSL,
+  rgbToCMyk,
+  generateColour,
+} from '../../../../convertFunctions';
+import Button from '../../../ui/btn/button/Button';
+import Card from './card/Card';
+import NewCardWindow from './modalWindowNewCard/NewCardWindow';
+import Notification from '../../../ui/notification/Notification';
+import PaletteInformation from './pageInformation/PaletteInformation';
 
 const Palette = () => {
-  const MaxAmountOfCards = 15;
-  const btns = [
-    <GenerateIcon />,
-    <LockIcon />,
-    <FillIcon />,
-    <SaveIcon />,
-    <DeleteIcon />,
-  ];
-  const cards = [
-    {
-      colour: '#AEB2DF',
+  const { colour: color } = useContext(ColourContext);
+  const maxAmountOfCards = 10;
+  const [isAddCard, setIsAddCard] = useState(false);
+  const [cardList, setCardList] = useState([]);
+  const [defaultCardList, setDefaultCardList] = useState([]);
+  const [newColour, setNewColour] = useState('#ffffff');
+  const addNewColourHandler = () => {
+    setIsAddCard((isAddCard) => !isAddCard);
+  };
+  const createCardObj = (colour, isLocked) => {
+    const [r, g, b] = getRGB(colour);
+    const [h, s, l] = rgbToHSL([r, g, b]);
+    const [c, m, y, k] = rgbToCMyk([r, g, b]);
+    return {
+      colour: colour.toUpperCase(),
       colourSet: {
-        RGB: '174, 178, 223',
-        HSL: '235, 43, 78',
-        CMYK: '22, 20, 0, 13',
+        RGB: `${r}, ${g}, ${b}`,
+        HSL: `${h}, ${s}, ${l}`,
+        CMYK: `${c}, ${m}, ${y}, ${k}`,
       },
-      isLocked: false,
-      isSaved: true,
-      isGenerate: true,
-      id: 1,
+      isLocked: isLocked,
+      id: Math.floor(Math.random() * 10000),
       key: Math.floor(Math.random() * 10000),
-    },
-    {
-      colour: '#AEB2DF',
-      colourSet: {
-        RGB: '174, 178, 223',
-        HSL: '235, 43, 78',
-        CMYK: '22, 20, 0, 13',
-      },
-      isLocked: false,
-      isSaved: true,
-      isGenerate: true,
-      id: 1,
-      key: Math.floor(Math.random() * 10000),
-    },
-    {
-      colour: '#AEB2DF',
-      colourSet: {
-        RGB: '174, 178, 223',
-        HSL: '235, 43, 78',
-        CMYK: '22, 20, 0, 13',
-      },
-      isLocked: false,
-      isSaved: true,
-      isGenerate: true,
-      id: 1,
-      key: Math.floor(Math.random() * 10000),
-    },
-    {
-      colour: '#AEB2DF',
-      colourSet: {
-        RGB: '174, 178, 223',
-        HSL: '235, 43, 78',
-        CMYK: '22, 20, 0, 13',
-      },
-      isLocked: false,
-      isSaved: true,
-      isGenerate: true,
-      id: 1,
-      key: Math.floor(Math.random() * 10000),
-    },
-    {
-      colour: '#AEB2DF',
-      colourSet: {
-        RGB: '174, 178, 223',
-        HSL: '235, 43, 78',
-        CMYK: '22, 20, 0, 13',
-      },
-      isLocked: false,
-      isSaved: true,
-      isGenerate: true,
-      id: 1,
-      key: Math.floor(Math.random() * 10000),
-    },
-  ];
+    };
+  };
+  const createCardsList = () => {
+    const list = [];
+    let cardAmount = 0;
+    const totalCardAmount = 5;
+    const colourList = [];
+    while (cardAmount !== totalCardAmount) {
+      let colour = generateColour();
+      let isColourExistYet = colourList.includes(colour);
+      if (!isColourExistYet) {
+        cardAmount++;
+        colourList.push(colour);
+        list.push(createCardObj(colour, false));
+      }
+    }
+    setCardList(list);
+    setDefaultCardList(list);
+  };
+  const addNewColour = (colour, isLocked = false) => {
+    const list = [...cardList];
+    list.push(createCardObj(colour, isLocked));
+    setCardList(list);
+    addNewColourHandler();
+  };
+  const resetCardsHandler = () => {
+    setCardList(defaultCardList);
+  };
+  const onSetNewColourHandler = (data) => {
+    if (data) setNewColour(data);
+  };
+  const generateColours = () => {
+    const list = [...cardList];
+    for (let i = 0; i < list.length; i++) {
+      if (list[i].isLocked) continue;
+      list[i] = createCardObj(generateColour(), false);
+    }
+    setCardList(list);
+  };
+  const onUpdateCardHandler = (data) => {
+    const { id, type } = data;
+    const list = [...cardList];
+    const index = list.findIndex((el) => el.id === id);
+    if (index === -1) return;
+    if (type === 'generate') {
+      list[index] = createCardObj(generateColour(), false);
+    } else if (type === 'lock') {
+      list[index].isLocked = true;
+    } else if (type === 'delete') {
+      return setCardList([
+        ...list.slice(0, index),
+        ...list.slice(index + 1, list.length),
+      ]);
+    }
+    setCardList(list);
+  };
+  useEffect(() => {
+    createCardsList();
+    setNewColour(generateColour());
+  }, []);
   return (
     <div className={classes.cardField}>
+      <PaletteInformation
+        reset={resetCardsHandler}
+        generate={generateColours}
+      />
       <div className={classes.cardList}>
-        {cards.map((el) => (
-          <div className={classes.card} key={el.key}>
-            <ColourCard colour={el.colour} />
-            <ColourParams colour={el.colour} btns={btns} />
-            <ColourSet colourSet={el.colourSet} />
-          </div>
+        {cardList.map((el) => (
+          <Card elem={el} onUpdate={onUpdateCardHandler} />
         ))}
       </div>
-      <div className={classes.createCard}>
-        <Button text="Add Colour" type="border" />
-      </div>
+      {cardList.length < maxAmountOfCards && (
+        <div className={classes.createCard}>
+          <Button
+            text="Add Colour"
+            type="border"
+            onClickFunc={addNewColourHandler}
+          />
+        </div>
+      )}
+      {isAddCard &&
+        createPortal(
+          <NewCardWindow
+            colour={newColour}
+            onSetNewColour={onSetNewColourHandler}
+            addNewColour={() => addNewColour(newColour, false, false)}
+            addNewColourHandler={addNewColourHandler}
+          />,
+          document.body
+        )}
+      {Object.entries(color).length !== 0 &&
+        createPortal(<Notification param={color} />, document.body)}
     </div>
   );
 };
