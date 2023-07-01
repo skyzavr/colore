@@ -1,14 +1,11 @@
 import classes from './paletteGenerator.module.css';
-import Descirption from './pageDescription/Description';
-import PaletteInformation from './pageInformation/PaletteInformation';
 import Palette from './PaletteArea/Palettes';
 
 const PaletteGenerator = () => {
   return (
     <div className={classes.wrapper}>
-      <PaletteInformation />
+      <div className={classes.title}>Palette generator</div>
       <Palette />
-      <Descirption />
     </div>
   );
 };
