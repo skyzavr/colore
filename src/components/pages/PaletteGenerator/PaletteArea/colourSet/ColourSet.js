@@ -3,7 +3,7 @@ const ColourSet = ({ colourSet }) => {
   return (
     <div className={classes.colourSet}>
       {Object.keys(colourSet).map((val) => (
-        <div className={classes.ColourSetItem}>
+        <div className={classes.ColourSetItem} key={val + colourSet[val]}>
           <div>{val}</div>
           <div>{colourSet[val]}</div>
         </div>
