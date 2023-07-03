@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import classes from './UserContrastCard.module.css';
 const UserContrastCard = ({ textColour, bgrColour, text }) => {
   const randomNumber = () => {
@@ -5,10 +6,11 @@ const UserContrastCard = ({ textColour, bgrColour, text }) => {
     const min = 555;
     return Math.floor(Math.random() * (max - min + 1) + min);
   };
+  const [quoteNumber, setQuoteNUmber] = useState(randomNumber());
   return (
     <div className={classes.card} style={{ backgroundColor: `${bgrColour}` }}>
       <div className={classes.title} style={{ color: `${textColour}` }}>
-        Quote #{randomNumber()}
+        Quote # {quoteNumber}
       </div>
       <div className={classes.text} style={{ color: `${textColour}` }}>
         {text}
