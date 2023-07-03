@@ -15,14 +15,13 @@ export function useCalculateContrastRatio() {
     return arr.map((el) => getParam(el));
   };
   const getLuminance = (color) => {
-    const rgbArr = getRGB(color);
-    const Luminance =
-      rgbArr[0] * 0.2126 + rgbArr[1] * 0.7152 + rgbArr[2] * 0.0722;
+    const [r, g, b] = getRGB(color);
+    const Luminance = r * 0.2126 + g * 0.7152 + b * 0.0722;
     return Luminance;
   };
   const getRatio = (colour, bgrColour) => {
-    const Lum1 = getLuminance(colour),
-      Lum2 = getLuminance(bgrColour);
+    const Lum1 = getLuminance(colour.toUpperCase()),
+      Lum2 = getLuminance(bgrColour.toUpperCase());
     const L1 = Math.max(Lum1, Lum2);
     const L2 = Math.min(Lum1, Lum2);
     return (L1 + 0.05) / (L2 + 0.05);
