@@ -1,7 +1,9 @@
 import classes from './colourCard.module.css';
+import { useCopyClipboard } from '../../../../../hooks/useCopyClipboard';
 const ColourCard = ({ colour }) => {
+  const [copy] = useCopyClipboard();
   return (
-    <div className={classes.colourCard}>
+    <div className={classes.colourCard} onClick={() => copy(colour)}>
       <div
         className={classes.bgr}
         style={{ backgroundColor: `${colour}` }}
