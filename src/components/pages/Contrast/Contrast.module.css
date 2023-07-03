@@ -47,11 +47,6 @@
     flex-direction: column;
   }
 }
-@media (min-width: 475px) {
-  .colourInputField {
-    flex-direction: row;
-  }
-}
 @media (min-width: 580px) {
   .contrast,
   .contrastInfo {
