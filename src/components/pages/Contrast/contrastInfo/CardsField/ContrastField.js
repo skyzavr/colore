@@ -4,18 +4,19 @@ import classes from './ContrastField.module.css';
 import { useCalculateContrastRatio } from '../../../../../hooks/useCalculateContrastRatio';
 const ContrastField = ({ colour, bgrColour }) => {
   const [getRatio] = useCalculateContrastRatio();
-  const contrastMarkHandler = () => {
-    if (contrastRatio >= 12) return 'Great';
-    if (contrastRatio >= 7) return 'Good';
+  const [contrastMark, setContrastMark] = useState(getRatio(colour, bgrColour));
+  const contrastMarkHandler = (ratio) => {
+    if (ratio >= 12) return 'Great';
+    if (ratio >= 7) return 'Good';
     return 'Poor';
   };
   const [contrastRatio, setContrastRatio] = useState(
     getRatio(colour, bgrColour)
   );
-  const [contrastMark, setContrastMark] = useState(getRatio(colour, bgrColour));
   useEffect(() => {
-    setContrastRatio(getRatio(colour, bgrColour));
-    setContrastMark(contrastMarkHandler());
+    let newRatio = getRatio(colour, bgrColour);
+    setContrastRatio(newRatio);
+    setContrastMark(contrastMarkHandler(newRatio));
   }, [colour, bgrColour]);
   return (
     <div className={classes.wrapper}>
