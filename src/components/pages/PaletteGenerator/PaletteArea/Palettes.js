@@ -67,7 +67,7 @@ const Palette = () => {
     setCardList(defaultCardList);
   };
   const onSetNewColourHandler = (data) => {
-    if (data) setNewColour(data);
+    setNewColour(data);
   };
   const generateColours = () => {
     const list = [...cardList];
@@ -106,7 +106,7 @@ const Palette = () => {
       />
       <div className={classes.cardList}>
         {cardList.map((el) => (
-          <Card elem={el} onUpdate={onUpdateCardHandler} />
+          <Card elem={el} onUpdate={onUpdateCardHandler} key={el.key} />
         ))}
       </div>
       {cardList.length < maxAmountOfCards && (
