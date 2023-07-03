@@ -1,27 +1,5 @@
 .title {
   font-size: 18px;
   color: var(--text);
-}
-.inputColourPicker {
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  height: 35px;
-  width: 35px;
-}
-.inputColour {
-  height: 30px;
-  width: 200px;
-  padding-left: 10px;
-  font-size: 16px;
-}
-.inputColourArea {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  align-items: center;
-  margin-bottom: 10px;
-  margin-top: 40px;
-  background-color: var(--text);
-  width: 250px;
+  margin-bottom: 40px;
 }
