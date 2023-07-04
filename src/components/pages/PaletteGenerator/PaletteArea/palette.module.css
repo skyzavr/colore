@@ -8,13 +8,6 @@
   margin: 40px auto;
   max-width: 1480px;
 }
-.cardList {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, max-content));
-  gap: 20px;
-  width: 100%;
-  justify-content: center;
-}
 .btnArea {
   display: flex;
   flex-direction: row;
