@@ -11,26 +11,22 @@ const ColourParams = ({ id, colour, onUpdateData }) => {
       comp: <GenerateIcon />,
       type: 'generate',
       tip: 'click here to generate new colour',
-      id: Math.floor(Math.random() * 10000),
     },
     {
       comp: <LockIcon />,
       type: 'lock',
       tip: 'click here to lock colour',
-      id: Math.floor(Math.random() * 10000),
     },
 
     {
       comp: <DeleteIcon />,
       type: 'delete',
       tip: 'it will remmove this colour',
-      id: Math.floor(Math.random() * 10000),
     },
     {
       comp: '?',
       type: 'moreInfo',
       tip: 'click to see more info about colour',
-      id: Math.floor(Math.random() * 10000),
     },
   ];
   const [params, setParams] = useState({
@@ -59,7 +55,7 @@ const ColourParams = ({ id, colour, onUpdateData }) => {
               target={'_blank'}
               to={'/ColourInfo'}
               onClick={() => setLocalStorageColour(colour)}
-              key={btn.id}
+              key={Math.floor(Math.random() * 10000)}
             >
               <div className={classes.btnItem}>{btn.comp}</div>
             </Link>
@@ -71,7 +67,7 @@ const ColourParams = ({ id, colour, onUpdateData }) => {
                 }`,
               ]}
               onClick={() => onClickHandler(btn.type)}
-              key={btn.id}
+              key={Math.floor(Math.random() * 10000)}
             >
               {btn.comp}
             </div>
