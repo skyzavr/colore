@@ -9,10 +9,10 @@ import {
   generateColour,
 } from '../../../../convertFunctions';
 import Button from '../../../ui/btn/button/Button';
-import Card from './card/Card';
 import NewCardWindow from './modalWindowNewCard/NewCardWindow';
 import Notification from '../../../ui/notification/Notification';
 import PaletteInformation from './pageInformation/PaletteInformation';
+import CardList from './cardList/CardList';
 
 const Palette = () => {
   const { colour: color } = useContext(ColourContext);
@@ -63,34 +63,14 @@ const Palette = () => {
     setCardList(list);
     addNewColourHandler();
   };
-  const resetCardsHandler = () => {
-    setCardList(defaultCardList);
-  };
-  const onSetNewColourHandler = (data) => {
-    setNewColour(data);
-  };
+  const resetCardsHandler = () => setCardList(defaultCardList);
+  const onSetNewColourHandler = (data) => setNewColour(data);
+  const onUpdateListHandler = (data) => setCardList(data);
   const generateColours = () => {
     const list = [...cardList];
     for (let i = 0; i < list.length; i++) {
       if (list[i].isLocked) continue;
       list[i] = createCardObj(generateColour(), false);
-    }
-    setCardList(list);
-  };
-  const onUpdateCardHandler = (data) => {
-    const { id, type } = data;
-    const list = [...cardList];
-    const index = list.findIndex((el) => el.id === id);
-    if (index === -1) return;
-    if (type === 'generate') {
-      list[index] = createCardObj(generateColour(), false);
-    } else if (type === 'lock') {
-      list[index].isLocked = true;
-    } else if (type === 'delete') {
-      return setCardList([
-        ...list.slice(0, index),
-        ...list.slice(index + 1, list.length),
-      ]);
     }
     setCardList(list);
   };
@@ -104,11 +84,11 @@ const Palette = () => {
         reset={resetCardsHandler}
         generate={generateColours}
       />
-      <div className={classes.cardList}>
-        {cardList.map((el) => (
-          <Card elem={el} onUpdate={onUpdateCardHandler} key={el.key} />
-        ))}
-      </div>
+      <CardList
+        onUpdateList={onUpdateListHandler}
+        onCreateObj={createCardObj}
+        list={cardList}
+      />
       {cardList.length < maxAmountOfCards && (
         <div className={classes.createCard}>
           <Button
