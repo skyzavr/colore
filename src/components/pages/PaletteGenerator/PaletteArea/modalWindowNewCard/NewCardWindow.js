@@ -13,7 +13,7 @@ const NewCardWindow = ({
     height: '350px',
   };
   return (
-    <Modal style={modalWindow}>
+    <Modal style={modalWindow} onClose={addNewColourHandler}>
       <div className={classes.title}>Add new colour</div>
       <InputColour colour={colour} onSetColour={onSetNewColour} />
       <Button onClickFunc={addNewColour} text="Add card" type="fill" />
