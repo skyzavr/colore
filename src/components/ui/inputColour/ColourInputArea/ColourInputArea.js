@@ -51,7 +51,7 @@ const ColourInputArea = ({ colour, updateColour, text }) => {
     <>
       {isError &&
         createPortal(
-          <Modal style={modalWindow}>
+          <Modal style={modalWindow} onClose={clearErrors}>
             <div className={classes.title}>There is Error</div>
             <div className={classes.error}>{errorMsg}</div>
             <Button onClickFunc={clearErrors} text="Ok" type="none" />
