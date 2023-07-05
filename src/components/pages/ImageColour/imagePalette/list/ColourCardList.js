@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import classes from './ColourCardList.module.css';
 import MoreInfoIcon from './MoreInfoIcon';
 import Card from './card/Card';
@@ -56,18 +56,21 @@ const ColourCardList = ({
           {listLen !== list.length && (
             <Button
               text={`Show more ${showMoreInfo()} cards`}
+              type="border"
               onClickFunc={ShowMore}
             />
           )}
           {listLen !== list.length && (
             <Button
               text={`Show all (${list.length - listLen})`}
+              type="border"
               onClickFunc={() => updateListHadler(list.length)}
             />
           )}
           {listLen > defaultAmount && (
             <Button
               text="Collapse"
+              type="border"
               onClickFunc={() => updateListHadler(defaultAmount)}
             />
           )}
