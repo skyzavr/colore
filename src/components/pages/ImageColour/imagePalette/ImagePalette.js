@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { decimalToHex, rgbToSl } from '../../../../convertFunctions';
+import { decimalToHex, rgbToHSL } from '../../../../convertFunctions';
 import classes from './ImagePalette.module.css';
 import ColourCardList from './list/ColourCardList';
 import ColourSwitching from './ColourSwitching/ColourSwitching';
@@ -43,15 +43,15 @@ const ImagePalette = ({ rgbList }) => {
       g = (g / list.length).toFixed(0);
       b = (b / list.length).toFixed(0);
       const hex = '#' + decimalToHex(r) + decimalToHex(g) + decimalToHex(b);
-      const sl = rgbToSl(r, g, b);
+      const [, s, l] = rgbToHSL([r, g, b]);
       return [
         {
           r: Number(r),
           g: Number(g),
           b: Number(b),
           hex: hex,
-          sat: Math.floor(sl[0] * 100),
-          lum: Math.floor(sl[1] * 100),
+          sat: s,
+          lum: l,
         },
       ];
     } else {
