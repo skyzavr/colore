@@ -69,6 +69,23 @@ export const rgbToHex = (huePos, satPos, lightPos) => {
   }
   return result;
 };
+const calculateHue = (delta, RGB) => {
+  const [R, G, B] = RGB;
+  const Cmax = Math.max(R, G, B);
+  let h = 0;
+  if (R === G && G === B) return 0;
+  if (Cmax === R) {
+    let value = 60 * (((G - B) / delta) % 6);
+    value < 0 ? (h = 360 + value) : (h = value);
+  } else if (Cmax === G) {
+    let value = (B - R) / delta;
+    h = 60 * (value + 2);
+  } else if (Cmax === B) {
+    let value = (R - G) / delta;
+    h = 60 * (value + 4);
+  }
+  return Number(h.toFixed());
+};
 export const rgbToHSL = (rgb) => {
   let R = rgb[0] / 255;
   let G = rgb[1] / 255;
@@ -76,31 +93,18 @@ export const rgbToHSL = (rgb) => {
   const Cmax = Math.max(R, G, B);
   const Cmin = Math.min(R, G, B);
   const delta = Cmax - Cmin;
-  let s, l, h;
+  let s = 0,
+    l = 0,
+    h = 0;
   l = (Cmax + Cmin) / 2;
-  delta === 0 ? (s = 0) : (s = delta / (1 - Math.abs(2 * l - 1)));
-  if (delta === 0) h = 0;
-  else if (Cmax === R) h = 60 * (((G - B) / delta) % 6);
-  else if (Cmax === G) h = 60 * ((B - R) / delta + 2);
-  else h = 60 * ((R - G) / delta + 4);
-  h = Math.floor(h);
-  s = Number((s * 100).toFixed(1));
-  l = Number((l * 100).toFixed(1));
+  if (delta !== 0) s = delta / (1 - Math.abs(2 * l - 1));
+  h = Math.floor(calculateHue(delta, [R, G, B]));
+  s = Number((s * 100).toFixed(0));
+  l = Number((l * 100).toFixed(0));
   return [h, s, l];
 };
-export const rgbToSl = (red, green, blue) => {
-  let R = red / 255;
-  let G = green / 255;
-  let B = blue / 255;
-  const Cmax = Math.max(R, G, B);
-  const Cmin = Math.min(R, G, B);
-  const delta = Cmax - Cmin;
-  let s, l;
-  l = (Cmax + Cmin) / 2;
-  delta === 0 ? (s = 0) : (s = delta / (1 - Math.abs(2 * l - 1)));
-  return [s, l];
-};
 export const rgbToCMyk = (rgb) => {
+  if (rgb[0] === 0 && rgb[1] === 0 && rgb[2] === 0) return [0, 0, 0, 100];
   let R = rgb[0] / 255;
   let G = rgb[1] / 255;
   let B = rgb[2] / 255;
@@ -121,7 +125,7 @@ export const hexToDec = (hexNum) => {
   let result = 0;
   for (let i = 0; i < hexNum.length; i++) {
     if (isNaN(hexNum[i])) {
-      let letToNum = Number(alphbet.indexOf(hexNum[i])) + 10;
+      let letToNum = Number(alphbet.indexOf(hexNum[i].toUpperCase())) + 10;
       result += letToNum * Math.pow(16, index - i);
     } else result += Number(hexNum[i]) * Math.pow(16, index - i);
   }
@@ -153,4 +157,25 @@ export const contrastColour = (colour, isRandomHue) => {
   const [hue, sat, light] = RandomHSL(colour);
   if (isRandomHue) return hslToRgb(hue, sat, light);
   return lum > 0.5 ? hslToRgb(0, 0, 0) : hslToRgb(0, 0, 100);
+};
+export const HexByRgb = (rgb) =>
+  `#${decimalToHex(rgb[0])}${decimalToHex(rgb[1])}${decimalToHex(rgb[2])}`;
+export const cmykToRgb = (cmyk) => {
+  const c = Number(cmyk[0]) / 100,
+    m = Number(cmyk[1]) / 100,
+    y = Number(cmyk[2]) / 100,
+    k = Number(cmyk[3]) / 100;
+  const R = Math.floor(255 * (1 - c) * (1 - k));
+  const G = Math.floor(255 * (1 - m) * (1 - k));
+  const B = Math.floor(255 * (1 - y) * (1 - k));
+  return [R, G, B];
+};
+export const generateColour = () => {
+  const alphabet = 'ABCDEF123456789';
+  let colour = '#';
+  for (let i = 0; i < 6; i++) {
+    let value = Math.floor(Math.random() * (alphabet.length - 1));
+    colour += alphabet[value];
+  }
+  return colour;
 };
