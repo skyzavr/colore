@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext } from 'react';
 import classes from './Card.module.css';
 import { ThemeContext } from '../../../../../../App';
 import { contrastColour } from '../../../../../../convertFunctions';
