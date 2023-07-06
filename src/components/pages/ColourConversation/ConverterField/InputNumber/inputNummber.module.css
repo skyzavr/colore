@@ -1,0 +1,35 @@
+.inputNumber {
+  width: 40px;
+  height: 30px;
+  background-color: var(--text);
+  color: var(--bgr);
+  text-align: center;
+  border-radius: 4px;
+}
+.inputNumber::-webkit-outer-spin-button,
+.inputNumber::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+.inputNumber,
+.inputNumber:hover,
+.inputNumber:focus {
+  appearance: none;
+  -moz-appearance: textfield;
+}
+.error {
+  padding: 10px 20px;
+  color: var(--red);
+  margin-bottom: 20px;
+  margin-top: 20px;
+  line-height: 1.33;
+}
+.title {
+  font-size: 18px;
+  color: var(--text);
+  text-align: center;
+}
+
+.errorInput {
+  border: 2px solid var(--red);
+}
