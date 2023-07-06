@@ -1,0 +1,30 @@
+.field {
+  display: flex;
+}
+.field > div {
+  margin-right: 36px;
+}
+.field > div:last-child {
+  margin-right: 0;
+}
+@media (min-width: 320px) {
+  .field {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .field > div {
+    margin-bottom: 20px;
+  }
+  .field > div:last-child {
+    margin-bottom: 0;
+  }
+}
+@media (min-width: 660px) {
+  .field {
+    flex-direction: column;
+    flex-direction: row;
+  }
+  .field > div {
+    margin-bottom: 0;
+  }
+}
