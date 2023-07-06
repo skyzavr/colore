@@ -1,7 +1,7 @@
 import classes from './InputColour.module.css';
 import ColourInputArea from './ColourInputArea/ColourInputArea';
 import ColourPicker from './ColourPicker/ColourPicker';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const InputColour = ({ onSetColour, colour }) => {
   const [inputColour, setInputColour] = useState(colour);
@@ -9,6 +9,9 @@ const InputColour = ({ onSetColour, colour }) => {
     setInputColour(data);
     onSetColour(data);
   };
+  useEffect(() => {
+    setInputColour(colour);
+  }, [colour]);
   return (
     <div className={classes.wrapper}>
       <div className={classes.inputColourArea}>
