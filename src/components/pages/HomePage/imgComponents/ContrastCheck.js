@@ -35,7 +35,7 @@ const ContrastChecker = () => {
         y="22.0002"
         width="134"
         height="22"
-        fill="#FDB344"
+        fill="#123456"
         fill-opacity="0.87"
       />
       <path
