@@ -5,11 +5,15 @@ import Header from './components/ui/header/Header';
 import Home from './components/pages/HomePage/Home';
 import Contrast from './components/pages/Contrast/Contrast';
 import PalleteGen from './components/pages/HomePage/imgComponents/PaletteGen';
+import PaletteGenerator from './components/pages/PaletteGenerator/PaletteGenerator';
 import ColourConv from './components/pages/HomePage/imgComponents/ColourConv';
 import ContrastChecker from './components/pages/HomePage/imgComponents/ContrastCheck';
 import ImgPalette from './components/pages/HomePage/imgComponents/ImgPalette';
 import ImageColour from './components/pages/ImageColour/ImageColour';
 import ColourInfo from './components/pages/FullColourInfo/ColourInfo';
+import ColourConverter from './components/pages/ColourConversation/ColourConverter';
+import NotFound from './components/pages/NotFound/NotFound';
+
 export const ThemeContext = createContext({});
 export const ColourContext = createContext({});
 const App = () => {
@@ -60,11 +64,12 @@ const App = () => {
             <main>
               <Routes>
                 <Route path="/" element={<Home cards={menuList} />} />
-                <Route path="/paletteGen" element={<Contrast />} />
-                <Route path="/colourConv" element={<Contrast />} />
+                <Route path="/paletteGen" element={<PaletteGenerator />} />
+                <Route path="/colourConv" element={<ColourConverter />} />
                 <Route path="/ContrastCheck" element={<Contrast />} />
                 <Route path="/ImagePalette" element={<ImageColour />} />
                 <Route path="/ColourInfo" element={<ColourInfo />} />
+                <Route path="/NotFound" element={<NotFound />} />
               </Routes>
             </main>
           </div>
