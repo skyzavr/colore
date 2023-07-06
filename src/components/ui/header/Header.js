@@ -1,5 +1,4 @@
 import classes from './Header.module.css';
-import Bookmarks from './Bookmarks';
 import Switch from './switch/Switch';
 import { useState, useEffect } from 'react';
 import SmallMenu from './smallMenu/SmallMenu';
@@ -19,10 +18,6 @@ const Header = ({ list }) => {
           <Link to="/">Colore</Link>
         </div>
         <div className={classes.menuWrapper}>
-          {widthSize >= 700 && <Switch />}
-          <div className={classes.Bookmarks}>
-            <Bookmarks />
-          </div>
           <SmallMenu width={widthSize} menuList={list}>
             <div className={classes.gitHubLink}>
               <a href="https://github.com/skyzavr/colore">GitHub</a>

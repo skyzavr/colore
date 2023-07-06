@@ -28,16 +28,6 @@
 .title {
   font-size: var(--medSize--4);
 }
-/* ##### */
-
-/* bookmarks icon  depends on colour mode*/
-.Bookmarks {
-  margin-left: var(--medSize--4);
-  margin-right: var(--medSize--4);
-}
-.Bookmarks svg * {
-  fill: var(--text);
-}
 .hr {
   height: 1px;
   background-color: var(--gray);
@@ -48,4 +38,3 @@
   flex-direction: row;
   align-items: center;
 }
-/* responsive */
