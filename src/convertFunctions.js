@@ -27,7 +27,8 @@ export const hueToRgb = (hue, c, x, m) => {
   blue = Math.floor((blue + m) * 255);
   return [red, green, blue];
 };
-export const hslToRgb = (h, s, l) => {
+export const hslToRgb = (list) => {
+  const [h, s, l] = list;
   //method that convert an HSL color  to an RGB one
   //https://www.baeldung.com/cs/convert-color-hsl-rgb
   //Hue is a colour circle that contains a number between 0 and 360
@@ -62,7 +63,7 @@ export const decimalToHex = (value) => {
   return result;
 };
 export const rgbToHex = (huePos, satPos, lightPos) => {
-  const rgbArray = hslToRgb(huePos, satPos, lightPos);
+  const rgbArray = hslToRgb([huePos, satPos, lightPos]);
   let result = '#';
   for (let i = 0; i < rgbArray.length; i++) {
     result += decimalToHex(rgbArray[i]);
@@ -155,8 +156,8 @@ export const RandomHSL = (colour) => {
 export const contrastColour = (colour, isRandomHue) => {
   const lum = getLuminosity(colour);
   const [hue, sat, light] = RandomHSL(colour);
-  if (isRandomHue) return hslToRgb(hue, sat, light);
-  return lum > 0.5 ? hslToRgb(0, 0, 0) : hslToRgb(0, 0, 100);
+  if (isRandomHue) return hslToRgb([hue, sat, light]);
+  return lum > 0.5 ? hslToRgb([0, 0, 0]) : hslToRgb([0, 0, 100]);
 };
 export const HexByRgb = (rgb) =>
   `#${decimalToHex(rgb[0])}${decimalToHex(rgb[1])}${decimalToHex(rgb[2])}`;
