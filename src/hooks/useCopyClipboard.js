@@ -31,7 +31,7 @@ export function useCopyClipboard() {
           type !== 'HEX' ? value.split(', ').map((el) => Number(el)) : value;
         switch (type) {
           case 'HSL':
-            const rgb = hslToRgb(list[0], list[1], list[2]);
+            const rgb = hslToRgb(list);
             finalValue = HexByRgb(rgb);
             break;
           case 'CMYK':
