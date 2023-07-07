@@ -20,7 +20,7 @@ const Card = ({ valueList, onUpdateValueListHandler }) => {
       <div className={classes.title}>{title}</div>
       <div className={classes.itemInputs}>
         {list.map((el, ind) => (
-          <div className={classes.item}>
+          <div className={classes.item} key={Math.floor(Math.random() * 10000)}>
             <InputNummber
               initialValue={el}
               ind={ind}

@@ -46,11 +46,22 @@
   .colourInputField {
     flex-direction: column;
   }
+  .contrast {
+    margin-top: 20px;
+  }
 }
 @media (min-width: 580px) {
   .contrast,
   .contrastInfo {
     margin: 10px auto;
+  }
+}
+@media (min-width: 620px) {
+  .colourInputField {
+    flex-direction: row;
+  }
+  .colourInputField > :first-child {
+    margin-right: 20px;
   }
 }
 @media (min-width: 1024px) {

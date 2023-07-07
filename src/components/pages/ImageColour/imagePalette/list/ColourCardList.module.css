@@ -22,15 +22,26 @@
 .btns {
   display: flex;
 }
+.btns button {
+  margin-bottom: 20px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
 @media (min-width: 300px) {
   .btns {
     flex-direction: column;
     justify-content: center;
   }
+  .btns button:last-child {
+    margin-bottom: 40px;
+  }
 }
-@media (min-width: 600px) {
+@media (min-width: 520px) {
   .btns {
     flex-direction: row;
     justify-content: center;
+  }
+  .btns button:last-child {
+    margin-bottom: 20px;
   }
 }

@@ -42,11 +42,15 @@
     margin-bottom: 10px;
   }
 }
-@media (min-width: 580px) {
+@media (min-width: 520px) {
   .wrapper {
     flex-direction: row;
     align-items: self-start;
     justify-content: space-between;
+  }
+  .wrapper div:nth-child(2n) {
+    margin-left: 10px;
+    margin-right: 10px;
   }
   .ContrastCard {
     margin-bottom: 0;

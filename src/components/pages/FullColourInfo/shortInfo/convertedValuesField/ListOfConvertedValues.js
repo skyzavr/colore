@@ -5,7 +5,7 @@ const ListOfConvertedValues = ({ ValuesList, TitlesList }) => {
   return (
     <div className={classes.container}>
       {TitlesList.map((el) => (
-        <div className={classes.item}>
+        <div className={classes.item} key={Math.floor(Math.random() * 10000)}>
           <div className={classes.systemName}>{el}:</div>
           <div
             className={classes.systemValue}
