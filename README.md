@@ -6,8 +6,8 @@
 
 # Links
 
-<a href="https://github.com/skyzavr/coloure">[Repo]</a> |
-<a href="#">[Live]</a> |
+<a href="https://github.com/skyzavr/colore">[Repo]</a> |
+<a href="https://colore-n2hrlc0j2-skyzavr.vercel.app">[Live]</a> |
 <a href="https://www.figma.com/file/BCxP7cNdGKp0o3SRHS8SH1/coloure-%7C-Colour-generator-app?type=design&node-id=0%3A1&mode=design&t=sC1YniIMiHdh3hcN-1">[Figma]</a>
 
 # About
